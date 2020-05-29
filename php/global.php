@@ -1,9 +1,13 @@
 <?php
 
+// $servername = "178.128.90.185";
+// $username = "spp401";
+// $password = "spp401";
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "online_learning";
+$acessKey = "NDA2MjA1NGZiYjMyMDA1YTE5ZTk1MWRkODU4MzgwMzg1ODI3NDRiZGM5YjhkNTYwYWNkNGZjNmI5OWU1YWUxZg==";
 
 // Function
 
@@ -82,13 +86,12 @@ function response_message($code, $message, $data=null,$maxPage=null, $paging=nul
             'paging' => $paging
             
         );
-        http_response_code($code);
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
         header('Access-Control-Max-Age: 1000');
         header('Content-Type: application/json');
         echo json_encode($response);
         exit;
-    }
+    }                                                                     
 
 ?>

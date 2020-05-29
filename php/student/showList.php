@@ -7,14 +7,16 @@
     if(mysqli_connect_errno()){
         response_message(500,"Error: ");
     }
-    $id = $_REQUEST["TID"];
-// เลือก วิชาที่อาจารย์เป็นผู้สอน `
-    $sql = "SELECT sub_t.SBID,subject.SBname,subject.SBdes 
-    FROM sub_t,subject 
-    where sub_t.SBID = subject.SBID and sub_t.TID  = $id"; 
+    $sid = $_REQUEST["SID"];
 
-    $results_array = array(); // สร้างอาร์เรย์ไว้เก็บของ
-    $result = mysqli_query($connect,$sql);//ติดต่อ + คิวลี่
+    // $sql =  "SELECT subject.*,study.*,student.SID
+    //          FROM ((study
+    //          INNER JOIN subject ON study.SBID = subject.SBID)
+    //          INNER JOIN student ON study.SID = '".$sid."')";
+    $sql = "SELECT * FROM study
+            INNER JOIN subject ON subject.SBID = study.SBID AND study.SID = '".$sid."'";
+    $results_array = array(); 
+    $result = mysqli_query($connect,$sql);
 
     if(empty($result)){
         response_message(404,"No found");
@@ -24,14 +26,13 @@
     while ($row = $result->fetch_assoc()) {
         $results_array[] = $row;
     }
-//คิวลี่วิชา    
+    
     if(empty($results_array)) {
         response_message(404,"No data found");
         return;
     }
     
     response_message(200,"Success",$results_array);
-    
     mysqli_free_result($result);
-    mysqli_close($con);
+    mysqli_close($connect);
 ?>

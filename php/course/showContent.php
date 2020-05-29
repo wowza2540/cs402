@@ -11,7 +11,7 @@
 //file ของแต่ละบทเรียน
     $sql2 = "SELECT lesson.Lname,lesson.Ldes,lesson.SBID,file.*
              FROM lesson
-             INNER JOIN file ON lesson.LID=file.LID";
+             LEFT JOIN file ON lesson.LID=file.LID ";
              
     $result = mysqli_query($connect,$sql2);
 

@@ -23,11 +23,11 @@
         
 
         //Check type
-        $allowed = array('docx', 'pdf', 'ppt','mp4');
-        if (!in_array($fileType, $allowed)) {
-            $canUpLoad = 0;
-            response_message(500,"Unsuccess: cannot upload");
-        }
+        // $allowed = array('docx', 'pdf', 'ppt','mp4');
+        // if (!in_array($fileType, $allowed)) {
+        //     $canUpLoad = 0;
+        //     response_message(500,"Unsuccess: cannot upload");
+        // }
 
         //เช็คขนาดของไฟล์
         $max_size = 200000000;

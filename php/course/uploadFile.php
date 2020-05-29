@@ -20,13 +20,6 @@
         $canUpLoad = 1;
         
 
-        //Check type
-        $allowed = array('docx', 'pdf', 'ppt','mp4');
-        if (!in_array($fileType, $allowed)) {
-            $canUpLoad = 0;
-            response_message(500,"Unsuccess: cannot upload");
-        }
-
         //เช็คขนาดของไฟล์
         $max_size = 200000000;
         $fileSize = $_FILES["fileToUpload"]["size"][$i];
@@ -44,7 +37,9 @@
                 $result2 = mysqli_query($connect,$sql2);
             }
         }
+        // echo $_FILES["fileToUpload"]["tmp_name"][$i];
     }
+    // echo $_FILES["fileToUpload"]["tmp_name"];
     $sql3 = "SELECT * FROM file WHERE LID = (SELECT lesson.LID FROM lesson ORDER BY LID DESC LIMIT 1)";
     $result3 = mysqli_query($connect,$sql3);
     if(empty($result3)){
@@ -60,10 +55,9 @@
         return;
     }
     
-    response_message(200,"Success",$results_array);
     mysqli_close($connect);
     if($canUpLoad == 1){
-        response_message(200,"Success");
+        response_message(200,"Success",$results_array);
     }else{
         response_message(500,"Unsuccess: cannot upload");
     }

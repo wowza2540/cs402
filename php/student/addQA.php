@@ -7,10 +7,10 @@
         response_message(500,"Error: ");
     }
 /*********** [ lesson file and les_file ] ************/
-    $lname = $_REQUEST["Lname"];
-    $ldes = $_REQUEST["Ldes"];
-    $sbid = $_REQUEST["SBID"];
-    $sql = "INSERT INTO `".$dbname."`.`lesson`(`Lname`, `Ldes`, `SBID`) VALUES ('".$lname."','".$ldes."','".$sbid."')";
+    $FID = $_REQUEST["FID"];
+    $detail = $_REQUEST["QAdetail"];
+    $postby = $_REQUEST["postby"];
+    $sql = "INSERT INTO `".$dbname."`.`qanda`(`postby`, `QAdetail`, `FID`) VALUES ('".$postby."','".$detail."','".$FID."')";
     $result = mysqli_query($con,$sql);
     if(!($result))
     {
