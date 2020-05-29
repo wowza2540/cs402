@@ -1,0 +1,69 @@
+* {
+    font-family: 'Ekkamai new';
+   }
+div.course-list {
+    margin: 2%;
+    /* border: 1px solid #ccc; */
+    float: left;
+    width: 200px;
+}  
+.course-list button{
+    background: white;
+}  
+button .course-list:hover {
+    border: 1px solid #777;
+}  
+div.course-list img {
+    width: 100%;
+    height: auto;
+}
+div.add-course {
+    margin: 100px;
+    float: left;
+    width: 200px;
+    /* height: 200px; */
+}  
+div.add-course img {
+    width: 50%;
+    height: auto;
+    margin: 35%;
+}
+h4.desc {
+    text-align: center;
+}
+.myCourse {
+    list-style-type: none;
+    padding: 1%;
+    background-color: #66669a;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    margin-bottom: 5%;
+    /* margin-top: 2%; */
+}
+.myCourse h3 {
+    color: white;
+    padding-top: 2%;
+    padding-left: 5%;
+    font-size: 20px;
+} 
+.myCourse button{
+    text-align: right;
+    margin-left: 80%;
+    font-size: 20px;
+}
+.container-cover{
+    width: 100%;
+}
+
+.btn {
+    border: 1px solid white;
+    border-radius: 15px;
+  }
+.glyphicon{
+    font-size:30px;
+    color:red;
+    cursor: pointer;
+}
+  
+ 
+   

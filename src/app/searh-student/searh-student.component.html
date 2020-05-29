@@ -1,0 +1,48 @@
+<!-- <div class="cover">
+    <img src="../../assets/images/cover.jpg" /> -->
+    <!-- <div class="cover-text">CS101</div> -->
+<!-- </div> -->
+<div class="cover-container">
+    <img class="container-cover" src="assets/images/course.PNG" />
+    <div class="navbar-page">
+        <ul>
+            <li><a [routerLink]="['/mainPage/addCourse']">{{subj}}</a></li>
+            <li><a [routerLink]="['/mainPage/searchStudent']" *ngIf="show">นักศึกษาที่ลงทะเบียน</a></li>
+        </ul>
+    </div>
+</div>
+<!-- <h2 class="py-4"></h2> -->
+<div class="alert alert-danger alert-dismissible" *ngIf="fail">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>{{warning}}</strong>
+</div>
+<div class="alert alert-success alert-dismissible fade show" *ngIf="success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong>
+</div>
+<div class="form-group mb-4">
+    <button class="button editlsit" (click)="clickToEditList()" *ngIf="edit">แก้ไขรายชื่อ</button>
+    <textarea *ngIf="!edit" class="form-control" type="text" placeholder="เพิ่มนักศึกษา หากเพิ่มหลายคนให้คั่นด้วยเครื่องหมายคอมม่า (,)" [(ngModel)]="searchText"></textarea>
+</div>
+<div>
+    <button class="button" (click)="addStudent()" *ngIf="!edit">add</button>
+    <button class="button" (click)="deleteStudent('All',0,0)" *ngIf="!edit">delete All</button>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>รหัสนักศึกษา</th>
+            <th>ชื่อ-นามสกุล</th>
+            <th>ภาควิชา</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <tr *ngFor="let s of studentList let i = index">
+            <td>{{s.id}}</td>
+            <td>{{s.name}}</td>
+            <td>{{s.department}}</td>
+            <td class="delete-btn" *ngIf="!edit"><span class="glyphicon glyphicon-minus-sign" (click)="deleteStudent('one',s.id,i)"></span></td>
+        </tr>
+    </tbody>
+</table>

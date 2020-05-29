@@ -1,0 +1,63 @@
+* {
+    font-family: 'Ekkamai new';
+   }
+th{
+    width: 10%;
+}
+td{
+    width: 10%;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+}  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+.navbar-page{
+    margin-bottom: 5%;
+}
+.container-cover{
+    width: 100%;
+  }
+  .navbar-page ul{
+    background: #66669a;
+  }
+  table{
+    table-layout: auto;
+    width: 100%;  
+  }
+  .button {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    color: #66669a;
+    background-color: #fff;
+    border-color: #66669a;
+    border-radius: 15px;
+    border: 1px solid;
+    margin: 1%;
+  }
+  .editlist{
+      margin-left: 90%;
+  }
+  
+  .button:hover {background-color: #66669a;
+  color: #fff;
+  border-color: none;
+  }

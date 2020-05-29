@@ -1,0 +1,83 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- <div class="navigator-path">navigator</div> -->
+<div class="cover-container">
+    <img class="container-cover" src="assets/images/course.PNG" />
+    <div class="navbar-page">
+        <ul>
+            <li><a [routerLink]="['/mainPage/addCourse']">{{subj}}</a></li>
+            <li><a [routerLink]="['/mainPage/searchStudent']" *ngIf="show">นักศึกษาที่ลงทะเบียน</a></li>
+        </ul>
+    </div>
+</div>
+<!-- body -->
+<div class="alert alert-danger alert-dismissible" *ngIf="fail">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>create failed! some line is empty</strong>
+</div>
+<div class="alert alert-success alert-dismissible fade show" *ngIf="success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong>
+</div>
+<div class="modal-body">
+    <div class="form-container">
+        <p *ngIf="show"> &nbsp;<span class="glyphicon glyphicon-folder-open"></span> &nbsp; &nbsp;อัพโหลดไฟล์</p>
+        <div class="form-upload card" *ngIf="show">
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">ชื่อหัวข้อ</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" name="headName" [(ngModel)]="headName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">คำอธิบาย</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" rows="5" cols="30" name="description"
+                            [(ngModel)]="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">รายการเอกสาร</label>
+                    <div class="col-sm-9">
+                        <form>
+                            <div class="form-group">
+                                <input id="myInput" type="file" name="fileToUpload[]" id="fileToUpload"
+                                    (change)="onFileChange($event)" multiple>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="list-group row" id="listGruop" *ngFor="let f of filename let i = index"
+                    (click)="deleteFromList(i)">
+                    <div class="list-group-item list-group-item-action col-sm-10">{{f}}<button type="button"
+                            id="delete-btn" class="btn btn-light col-sm-2">x</button></div>
+                </div>
+            </div>
+            <div class="form-button">
+                <button class="btn btn-success" (click)="addContent()">ตกลง</button>
+                <button class="btn btn-danger">ยกเเลิก</button>
+            </div>
+        </div>
+        <div class="form-display">
+            <button class="card" *ngFor="let i of contentList">
+                <div class="card-body" (click)="open(i.LID,i.header,i.des)">
+                    <div>
+                        <h4 id="header">{{i.header}}</h4>
+                    </div>
+                    <h6 id="description">{{i.des}}</h6>
+                </div>
+                <div class="show-list-file" *ngFor="let name of i.fname  let ind = index">
+                    <!-- <p *ngIf="(i.ftype[ind] != 'mp4')"><a href="http://localhost/{{i.path[ind]}}"> -->
+                    <p *ngIf="(i.ftype[ind] != 'mp4')"><a href="http://178.128.90.185/{{i.path[ind]}}">
+                        <img class="icon" src="assets/images/document.png" width="5%" />
+                        {{name}}</a>
+                    </p>
+                    <div (click)="playerVDO(i.path[ind],i.fname[ind],i.fid[ind])" *ngIf="(i.ftype[ind] == 'mp4')">
+                        <img class="icon" *ngIf="(i.ftype[ind] == 'mp4')" src="assets/images/play.png" width="5%" />
+                        {{name}}</div>
+                </div>
+            </button>
+        </div>
+    </div>

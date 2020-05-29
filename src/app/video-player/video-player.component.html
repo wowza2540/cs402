@@ -1,0 +1,43 @@
+<script type="text/javascript" src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://player.longtailvideo.com/jwplayer.js"></script>
+<div class="row">
+    <div class="showvdo col-sm-9">
+        <video controls="controls" preload="metadata" style="width: 100%;">
+            <!-- <source src="http://162.243.93.111:8081/vod/BigBuckBunny_320x180.mp4/playlist.m3u8" type="application/x-mpegurl"> -->
+            <source src="{{path}}" type="video/mp4">
+            <source src="assets/vdo/Countdown.mp4" type="video/mp4">
+        </video>
+        <h1>{{filename}}</h1>
+        <div class="comment-container">
+            <div class="show-comment">
+                <div class="main-comment row" *ngFor="let i of postlist">
+                    <div class="col-sm-2"><img src="assets/images/teacher.jpg" /></div>
+                    <div class="massage-main">
+                        <div class="user">{{i.name}}</div>
+                        <div class="msg">{{i.msg}}</div>
+                    </div>
+                </div>
+            </div>
+            <p>แสดงความคิดเห็น</p>
+            <input type="text" class="form-control form-rounded" placeholder="comment..." [(ngModel)]="comment"
+                (keydown)="keyDownFunction($event)">
+        </div>
+    </div>
+    <div class="vdoList col-sm-3">
+        <div class="myCourse">
+            <h3>เนื้อหาหลักสูตร</h3>
+        </div>
+        <div class="vdoList-container">
+            <div class="vdoList" *ngFor="let item of list">
+                <div class="header">
+                    <h3>{{item.header}}</h3>
+                </div>
+                <div class="allvdo" *ngFor="let name of item.fname  let ind = index">
+                    <div (click)="setPath(item.path[ind],name,item.fid[ind])" *ngIf="item.ftype[ind] == 'mp4'">
+                        <img class="icon" src="assets/images/play.png" width="5%" />
+                        {{name}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div>
+    <img class="container-cover" src="assets/images/home.PNG" />
+    <div class="myCourse">
+        <h3>My Course
+        <button class="btn btn-outline-light" *ngIf="edit && show" (click)="setEdit()">delete</button>
+        <button class="btn btn-outline-light" *ngIf="!edit" (click)="setEdit2()">done</button></h3>
+    </div>
+</div>
+<!-- ช่องวิชา -->
+<div class="course-list" *ngFor="let s of subjectList let i = index">
+    <span class="glyphicon glyphicon-remove-sign" *ngIf="!edit" (click)="deleteSubject(i)"></span>
+    <button (click)="onClick(s.id)">
+        <img src="assets/images/login.jpg" width="600" height="400">
+        <h4 class="desc">{{s.id}} : {{s.des}}</h4>
+    </button>
+</div>
+<div class="add-course" *ngIf="show">
+    <input type="image" src="assets/images/add-icon.png" alt="Cinque Terre" width="50px" height="50px"
+        (click)="open()" />
+</div>

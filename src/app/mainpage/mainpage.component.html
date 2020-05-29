@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<div class="container">
+  <div class="header-bar">
+    <a [routerLink]="['/mainPage/home']"><img class="img-left" src="assets/images/login.jpg" /></a>
+    <div class="header-bar-right">
+      <div class="dropdown">
+        <img class="img-noti" src="assets/images/bell.png" data-toggle="dropdown" /><span class="badge">{{lengthnoti}}</span>
+        <div class="dropdown-content " id="box">
+          <div class="msg">
+            <h3>Notifications</h3>
+          </div>
+          <div class="dropdown-box">
+            <button class="notifi-item dropdown-item" *ngFor="let item of noti let ind = index" (click)="onClicknoti(ind)">
+              <img src="assets/images/login.jpg" alt="img">
+              <div class="text">
+                <h4>{{item}}</h4>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <img class="img-noti" src="{{profilePic}}" data-toggle="dropdown" />
+        <div class="dropdown-content">
+          <a class="dropdown-item">{{name}}</a>
+          <a class="dropdown-item" (click)="onClick()">logout</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- <img class="container-cover" src="assets/images/home.PNG" /> -->
+
+  <router-outlet></router-outlet>
+
+  <div class="footer"></div>
