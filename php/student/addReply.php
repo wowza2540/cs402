@@ -7,13 +7,13 @@
         response_message(500,"Error: ");
     }
 /*********** [ lesson file and les_file ] ************/
-    $FID = $_REQUEST["FID"];
-    $detail = $_REQUEST["QAdetail"];
+    $QAID = $_REQUEST["QAID"];
+    $detail = $_REQUEST["detail"];
     $postby = $_REQUEST["postby"];
-    $SID = $_REQUEST['SID'];
-    $sql = "INSERT INTO `".$dbname."`.`qanda`(`postby`, `QAdetail`, `FID`,`ownerID`) VALUES ('".$postby."','".$detail."','".$FID."','".$SID."')";
+    $SID = $_REQUEST['ID'];
+    $sql = "INSERT INTO `".$dbname."`.`reply`(`detail`, `postby`, `ownerID`,`QAID`) VALUES ('".$detail."','".$postby."','".$SID."','".$QAID."')";
     $result = mysqli_query($con,$sql);
-    $sql =  "SELECT QAID FROM qanda ORDER BY QAID DESC LIMIT 1";
+    $sql =  "SELECT RID FROM reply ORDER BY QAID DESC LIMIT 1";
     $results_array = array(); 
     $result = mysqli_query($con,$sql);
 

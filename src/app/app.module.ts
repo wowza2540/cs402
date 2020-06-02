@@ -21,6 +21,7 @@ import { MainpageComponent } from './mainpage/mainpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoPlayerService } from './video-player/video-player.service';
+
 const routes: Routes = [   
   { path: 'loginPage', component: LoginComponent },
   { path: 'mainPage', component: MainpageComponent, children: [

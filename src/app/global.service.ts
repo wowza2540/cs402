@@ -8,8 +8,8 @@ import { Course } from './add-course/Course';
   providedIn: 'root'
 })
 export class GlobalService {
-  // public baseurl:string = "http://localhost/first-app/";
-  public baseurl:string = "http://178.128.90.185/firstApp/";
+  public baseurl:string = "http://localhost/first-app/";
+  // public baseurl:string = "http://178.128.90.185/firstApp/";
   // public baseurl:string = "http://localhost/firstApp/";
   username:string;
   name:string;

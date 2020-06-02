@@ -7,13 +7,11 @@
         response_message(500,"Error: ");
     }
 // `
-    $qaid = $_REQUEST["QAID"];
+    $rid = $_REQUEST["RID"];
     $results_array = array();
 
     //delete from sql
-    $sql = "DELETE FROM qanda where QAID = '".$qaid."'";
-    $result = mysqli_query($connect,$sql) or response_message(500,"Unsuccess");
-    $sql = "DELETE FROM reply where QAID = '".$qaid."'";
+    $sql = "DELETE FROM reply where RID = '".$rid."'";
     $result = mysqli_query($connect,$sql) or response_message(500,"Unsuccess");
 
     response_message(200,"Success");

@@ -5,6 +5,7 @@ import { Course } from '../add-course/Course';
 import { Router } from '@angular/router';
 import { PostInfo } from './PostInfo';
 import { VideoPlayerService } from './video-player.service';
+import { replyInfo } from './replyInfo';
 
 @Component({
   selector: 'app-video-player',
@@ -19,12 +20,17 @@ export class VideoPlayerComponent implements OnInit {
   comment:string;
   postby:string;
   postlist:PostInfo[];
+  replystatus:boolean;
+  reply:string;
+  qastatus:string;
+  owner:string = this.global.username;
 
   constructor(private global:GlobalService,private courseService:CourseService,private router:Router,private vdoservice:VideoPlayerService) { 
     this.comment = "";
   }
 
   ngOnInit() {
+    this.replystatus = false;
     this.postlist = [];
     if(this.global.username == undefined || this.global.username== ""){
       this.router.navigateByUrl('/loginPage');
@@ -45,11 +51,22 @@ export class VideoPlayerComponent implements OnInit {
           this.postlist = [];
         }
       });
-      console.log(this.vdoservice.postlist);
+      this.vdoservice.showReply().subscribe(result => {
+        console.log(result);
+        for(let i=0; i< this.vdoservice.postlist.length; i++){
+          let tmp = this.vdoservice.postlist[i].id;
+          const rs :replyInfo[] = result.filter(function(f){
+            return f.id == tmp;
+          });
+          this.vdoservice.postlist[i].reply = rs;
+          console.log(rs);
+        }
+      });
       this.postby = this.global.name;
     }
     console.log(this.fid);
   }
+
   setPath(newPath:string,newName:string,fid:string){
     this.path = newPath;
     this.filename = newName;
@@ -70,10 +87,30 @@ export class VideoPlayerComponent implements OnInit {
       this.vdoservice.addComment(this.fid,this.global.name,this.comment).subscribe(result=>{
         if(result){
           this.postlist = this.vdoservice.postlist;
-          console.log("key down: "+this.postlist.length);
           this.comment = "";
         }
       });
     }
+  }
+  onClick(qaid:string){
+    this.replystatus = true;
+    this.qastatus = qaid;
+  }
+  keyDownReply(event,qaid:string){
+    if(event.keyCode == 13 && this.reply != ""){
+      console.log(qaid);
+      this.replystatus = false;
+      this.vdoservice.addReply(qaid,this.global.name,this.reply).subscribe();
+      this.qastatus = "0";
+      this.reply = "";
+    }
+  }
+  clickToDelete(rid:string,index1:any,index2:any){
+    this.vdoservice.deleteReply(rid,index1,index2).subscribe();
+    console.log(rid);
+  }
+  clickToDeleteAll(qaid:string,index:any){
+    this.vdoservice.deleteComment(qaid,index).subscribe();
+    console.log(qaid);
   }
 }

@@ -45,22 +45,28 @@
 }
 .myCourse h3 {
     color: white;
-    /* padding-top: 2%; */
     padding-left: 5%;
     font-size: 20px;
     text-align: center;
     margin-top: 5%;
 } 
 .comment-container img{
-    width: 75%;
+    width: 70%;
+    margin-left: 5%;
+    text-align: center;
+}
+.comment-container{
+    width: 70%;
 }
 .reply-comment{
-    margin-left: 10%;
-    /* margin-bottom: 3%; */
+    margin-left: 6%;
+}
+.reply-comment img{
+    width: 50%;
 }
 .show-comment{
     margin: 2%;
-    width: 80%;
+    margin-top: 2%;
 }
 .user{
     font-weight:bold;
@@ -68,4 +74,30 @@
 }
 .msg{
     font-size: 16px;
+}
+  .button {
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    color: #66669a;
+    background-color: #fff;
+    border-color: #66669a;
+    border-radius: 15px;
+    border: 1px solid;
+    margin: 1%;
+  }
+  .editlist{
+      margin-left: 90%;
+  }
+  
+  .button:hover {background-color: #66669a;
+  color: #fff;
+  border-color: none;
+  }
+  .glyphicon{
+      color: white;
+  }
+  .glyphicon:hover{
+    color: #66669a;
 }

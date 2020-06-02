@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         }else{
           this.show = true;
           this.router.navigateByUrl('/loginPage');
+          
         }
       });
     }

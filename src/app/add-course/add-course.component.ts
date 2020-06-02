@@ -15,7 +15,11 @@ import { empty } from 'rxjs';
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.css'] 
 })
+
+
 export class AddCourseComponent implements OnInit {
+  @ViewChild('myInput', {static: false}) myInputVariable: ElementRef;
+
   id:string;//เอาไว้เลือกว่าจะเปิดของไอดีไหน
   // [(ngModel)]
   headName:string;
@@ -60,7 +64,11 @@ export class AddCourseComponent implements OnInit {
     if(this.headName != undefined && this.description != undefined && this.file.length != 0){
       this.cService.addCourse(this.headName,this.description).subscribe();
       if(this.file.length!=0){
-        this.cService.uploadFile(fileToUpload,this.headName,this.description).subscribe();
+        this.cService.uploadFile(fileToUpload,this.headName,this.description).subscribe(result =>{
+          this.myInputVariable.nativeElement.value = "";
+          this.file = [];
+          this.filename = [];
+        });
       }
     
       this.success = true;
@@ -107,6 +115,7 @@ export class AddCourseComponent implements OnInit {
       if(event.target.files[i].name.length > 0 && event.target.files[i].size < 200000000){
         this.file.push(event.target.files[i]);
         this.filename.push(event.target.files[i].name);
+        event.target.files[i].name = "";
       }
     }
   }

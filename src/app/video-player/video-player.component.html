@@ -1,21 +1,36 @@
 <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="http://player.longtailvideo.com/jwplayer.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 <div class="row">
     <div class="showvdo col-sm-9">
         <video controls="controls" preload="metadata" style="width: 100%;">
             <!-- <source src="http://162.243.93.111:8081/vod/BigBuckBunny_320x180.mp4/playlist.m3u8" type="application/x-mpegurl"> -->
             <source src="{{path}}" type="video/mp4">
-            <source src="assets/vdo/Countdown.mp4" type="video/mp4">
+            <!-- <source src="assets/vdo/Countdown.mp4" type="video/mp4"> -->
         </video>
         <h1>{{filename}}</h1>
         <div class="comment-container">
-            <div class="show-comment">
-                <div class="main-comment row" *ngFor="let i of postlist">
-                    <div class="col-sm-2"><img src="assets/images/teacher.jpg" /></div>
-                    <div class="massage-main">
+            <div class="show-comment" *ngFor="let i of postlist let ind1 = index">
+                <div class="main-comment row">
+                    <div class="col-sm-2"><span *ngIf="i.ownerID == owner" class="glyphicon glyphicon-minus-sign" (click)="clickToDeleteAll(i.qaid,ind1)"></span><img src="assets/images/teacher.jpg" /></div>
+                    <div class="massage-main col-sm-9">
                         <div class="user">{{i.name}}</div>
                         <div class="msg">{{i.msg}}</div>
                     </div>
+                </div>
+                <div class="reply-comment row" *ngFor="let j of i.reply let ind2 = index">
+                    <div class="col-sm-2"><span *ngIf="j.owner == owner" class="glyphicon glyphicon-minus-sign" (click)="clickToDelete(j.rid,ind1,ind2)"></span><img src="assets/images/teacher.jpg" /></div>
+                    <div class="massage-main col-sm-10">
+                        <div class="user">{{j.name}}</div>
+                        <div class="msg">{{j.msg}}</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button class="button editlsit col-sm-2" (click)="onClick(i.qaid)" *ngIf="qastatus != i.qaid">ตอบกลับ</button>
+                    <input type="text" class="form-control form-rounded col-sm-10" placeholder="reply..." [(ngModel)]="reply"
+                        (keydown)="keyDownReply($event,i.qaid)" *ngIf="qastatus == i.qaid">
                 </div>
             </div>
             <p>แสดงความคิดเห็น</p>

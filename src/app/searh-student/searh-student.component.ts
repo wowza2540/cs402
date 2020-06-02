@@ -62,7 +62,7 @@ export class SearhStudentComponent implements OnInit {
     console.log("add com");
     try{
       let studentAdd = this.searchText.split(',');
-      if(studentAdd.length != 0){
+      if(studentAdd.length != 0 && this.searchText != ""){
         let i=0; 
         let conti = false;
         for(let i=0; i<studentAdd.length; i++){

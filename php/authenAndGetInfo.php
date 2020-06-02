@@ -1,7 +1,7 @@
 <?php
 require_once "global.php";
+require_once "studentInfo.php";
 $SID = $_REQUEST["SID"];
-// echo $_REQUEST["student"];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -23,6 +23,9 @@ $response = curl_exec($curl);
 $err = curl_error($curl);
 
 curl_close($curl);
+if(empty($response)){
+  $response = $data;
+}
 
 if ($err) {
     response_message(500,"Error ");
