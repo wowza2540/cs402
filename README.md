@@ -1,8 +1,11 @@
-#suk25 : คอร์สเรียนออนไลน์ 
-โปรเจคจบวิชา CS402 และ CS401
-จัดทำโดย
-นางสาวคุนัญญา แซ่โก รหัสนักศึกษา 5909610700
-นางสาวสุภาพร ทองศักดิ์ รหัสนักศึกษา 5909610759
+**suk25 : คอร์สเรียนออนไลน์** 
+========================
+
+ โปรเจควิชา CS401 และ CS402   
+ จัดทำโดย 
+ - นางสาวคุนัญญา แซ่โก รหัสนักศึกษา 5909610700
+  - นางสาวสุภาพร ทองศักดิ์ รหัสนักศึกษา 5909610759
+
 
 **Directory Tree**
 -----------------------
@@ -23,10 +26,14 @@
  1. คัดลอกไฟล์ใน .dist ในโปรเจค ลงใน /var/www/html/firstApp
  2. สร้างไฟล์ /uploads ใน /var/www/html
  
- **ติดตั้ง nimble streamer**
  
-ก่อนจะเริ่มใช้งานในส่วนการสตรีมวิดีโอ ให้ทำการติดตั้ง nimble streamer ตามขั้นตอนต่อไปนี้
+ **nimble streamer**
+--------------------------------------------------
 
+> ก่อนจะเริ่มใช้งานในส่วนการสตรีมวิดีโอ ให้ทำการติดตั้ง nimble streamer
+> ตามขั้นตอนต่อไปนี้
+
+ **ติดตั้ง nimble streamer**
  1. ทำการแก้ไขไฟล์  `sudo nano /etc/apt/sources.list`
  2. วางคำสั่งต่อไปนี้ในไฟล์ sources.list  `deb http://nimblestreamer.com/ubuntu bionic/`
  3. กด  `ctrl+o` หลังจากนั้นกด enter เพื่อทำการบันทึกไฟล์  `ctrl+x` เพื่อออกจากการแก้ไขไฟล์
@@ -39,12 +46,11 @@
 		> $ sudo /usr/bin/nimble_regutil
 		> $ sudo service nimble restart
 
-** หากต้องการ stop service ให้ใช้คำสั่ง `sudo service nimble stop`
+> ** หากต้องการ stop service ให้ใช้คำสั่ง `sudo service nimble stop`
 
 
 
-**การตั้งค่า nimble streamer บนเว็บไซต์**
-
+**การตั้งค่าใช้งานบนเว็บไซต์**
  1. ทำการลงทะเบียนอีเมลล์ที่เว็บไซต์ **[https://wmspanel.com/](https://wmspanel.com/)**
  2. ทำตามขั้นตอนต่อไปนี้
 	 nimble streamer -> edit nimble routes -> Add VOD Streaming route
